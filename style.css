@@ -1,0 +1,933 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Montserrat", sans-serif;
+    overflow: hidden;
+    background-color: #f0f8ff;
+  }
+  
+  .container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s ease;
+  }
+  
+  /* Characters - Cartoon Style */
+  .character {
+    position: absolute;
+    z-index: 10;
+    transition: all 0.5s ease;
+  }
+  
+  /* Walking Animation */
+  .walking-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #87ceeb 0%, #e0f7fa 100%);
+    overflow: hidden;
+  }
+  
+  .walking-ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25%;
+    background: linear-gradient(to bottom, #f4a460 0%, #d2b48c 100%);
+    z-index: 1;
+  }
+  
+  .tree {
+    position: absolute;
+    bottom: 25%;
+    z-index: 2;
+  }
+  
+  .tree-trunk {
+    width: 30px;
+    height: 100px;
+    background: linear-gradient(to bottom, #8b4513 0%, #a0522d 100%);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+  }
+  
+  .tree-top {
+    width: 120px;
+    height: 150px;
+    background: radial-gradient(ellipse at center, #228b22 0%, #006400 100%);
+    border-radius: 50% 50% 50% 50%;
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    z-index: 1;
+  }
+  
+  /* Cartoon Character - Boyfriend */
+  .boyfriend {
+    position: absolute;
+    width: 100px;
+    height: 200px;
+    z-index: 10;
+  }
+  
+  .boyfriend-head {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #ffdbac;
+    border-radius: 50%;
+    top: 0;
+    left: 20px;
+  }
+  
+  .boyfriend-hair {
+    position: absolute;
+    width: 70px;
+    height: 25px;
+    background: #3e2723;
+    border-radius: 30px 30px 0 0;
+    top: -5px;
+    left: 15px;
+  }
+  
+  .boyfriend-hair:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 15px;
+    background: #3e2723;
+    border-radius: 0 0 10px 0;
+    top: 15px;
+    left: 0;
+  }
+  
+  .boyfriend-eye {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #212121;
+    border-radius: 50%;
+    top: 25px;
+  }
+  
+  .boyfriend-eye.left {
+    left: 20px;
+  }
+  
+  .boyfriend-eye.right {
+    left: 40px;
+  }
+  
+  .boyfriend-mouth {
+    position: absolute;
+    width: 20px;
+    height: 8px;
+    background: transparent;
+    border-bottom: 2px solid #212121;
+    border-radius: 0 0 10px 10px;
+    top: 40px;
+    left: 25px;
+  }
+  
+  .boyfriend-body {
+    position: absolute;
+    width: 60px;
+    height: 70px;
+    background: #3f51b5;
+    top: 60px;
+    left: 20px;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .boyfriend-arm {
+    position: absolute;
+    width: 15px;
+    height: 60px;
+    background: #3f51b5;
+    top: 65px;
+    border-radius: 5px;
+  }
+  
+  .boyfriend-arm.left {
+    left: 5px;
+    transform-origin: top center;
+  }
+  
+  .boyfriend-arm.right {
+    left: 80px;
+    transform-origin: top center;
+  }
+  
+  .boyfriend-leg {
+    position: absolute;
+    width: 20px;
+    height: 70px;
+    background: #283593;
+    top: 130px;
+    border-radius: 5px;
+  }
+  
+  .boyfriend-leg.left {
+    left: 25px;
+  }
+  
+  .boyfriend-leg.right {
+    left: 55px;
+  }
+  
+  /* Cartoon Character - Girlfriend */
+  .girlfriend {
+    position: absolute;
+    width: 100px;
+    height: 200px;
+    z-index: 10;
+  }
+  
+  .girlfriend-head {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    background: #ffdbac;
+    border-radius: 50%;
+    top: 0;
+    left: 22px;
+  }
+  
+  .girlfriend-hair {
+    position: absolute;
+    width: 65px;
+    height: 30px;
+    background: #8d6e63;
+    border-radius: 30px 30px 0 0;
+    top: -10px;
+    left: 17px;
+  }
+  
+  .girlfriend-hair:after {
+    content: "";
+    position: absolute;
+    width: 65px;
+    height: 40px;
+    background: #8d6e63;
+    border-radius: 0 0 30px 30px;
+    top: 20px;
+    left: 0;
+  }
+  
+  .girlfriend-eye {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: #212121;
+    border-radius: 50%;
+    top: 22px;
+    z-index: 1;
+  }
+  
+  .girlfriend-eye.left {
+    left: 18px;
+  }
+  
+  .girlfriend-eye.right {
+    left: 35px;
+  }
+  
+  .girlfriend-mouth {
+    position: absolute;
+    width: 15px;
+    height: 7px;
+    background: transparent;
+    border-bottom: 2px solid #212121;
+    border-radius: 0 0 10px 10px;
+    top: 35px;
+    left: 22px;
+    z-index: 1;
+  }
+  
+  .girlfriend-body {
+    position: absolute;
+    width: 50px;
+    height: 65px;
+    background: #e91e63;
+    top: 55px;
+    left: 25px;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .girlfriend-arm {
+    position: absolute;
+    width: 12px;
+    height: 55px;
+    background: #e91e63;
+    top: 60px;
+    border-radius: 5px;
+  }
+  
+  .girlfriend-arm.left {
+    left: 13px;
+    transform-origin: top center;
+  }
+  
+  .girlfriend-arm.right {
+    left: 75px;
+    transform-origin: top center;
+  }
+  
+  .girlfriend-leg {
+    position: absolute;
+    width: 18px;
+    height: 65px;
+    background: #ad1457;
+    top: 120px;
+    border-radius: 5px;
+  }
+  
+  .girlfriend-leg.left {
+    left: 28px;
+  }
+  
+  .girlfriend-leg.right {
+    left: 54px;
+  }
+  
+  /* Walking Animation */
+  .walking-boyfriend {
+    position: absolute;
+    width: 100px;
+    height: 200px;
+    bottom: 25%;
+    left: -150px;
+    z-index: 10;
+    animation: walking 6s linear forwards;
+  }
+  
+  @keyframes walking {
+    0% {
+      left: -150px;
+      transform: translateY(0);
+    }
+    10% {
+      transform: translateY(-10px);
+    }
+    20% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-10px);
+    }
+    40% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(0);
+    }
+    70% {
+      transform: translateY(-10px);
+    }
+    80% {
+      transform: translateY(0);
+    }
+    90% {
+      transform: translateY(-10px);
+    }
+    100% {
+      left: calc(100% + 150px);
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes swingLeftArm {
+    0% {
+      transform: rotate(-30deg);
+    }
+    100% {
+      transform: rotate(30deg);
+    }
+  }
+  
+  @keyframes swingRightArm {
+    0% {
+      transform: rotate(30deg);
+    }
+    100% {
+      transform: rotate(-30deg);
+    }
+  }
+  
+  @keyframes swingLeftLeg {
+    0% {
+      transform: rotate(20deg);
+    }
+    100% {
+      transform: rotate(-20deg);
+    }
+  }
+  
+  @keyframes swingRightLeg {
+    0% {
+      transform: rotate(-20deg);
+    }
+    100% {
+      transform: rotate(20deg);
+    }
+  }
+  
+  .walking-boyfriend .boyfriend-arm.left {
+    animation: swingLeftArm 0.5s infinite alternate;
+  }
+  
+  .walking-boyfriend .boyfriend-arm.right {
+    animation: swingRightArm 0.5s infinite alternate;
+  }
+  
+  .walking-boyfriend .boyfriend-leg.left {
+    animation: swingLeftLeg 0.5s infinite alternate;
+  }
+  
+  .walking-boyfriend .boyfriend-leg.right {
+    animation: swingRightLeg 0.5s infinite alternate;
+  }
+  
+  .walking-boyfriend-heart {
+    position: absolute;
+    font-size: 24px;
+    color: #f44336;
+    top: 20px;
+    left: 80px;
+    opacity: 0;
+    animation: floatingHeart 3s infinite;
+  }
+  
+  @keyframes floatingHeart {
+    0% {
+      opacity: 0;
+      transform: translateY(0) scale(0.5);
+    }
+    25% {
+      opacity: 1;
+      transform: translateY(-20px) scale(1);
+    }
+    75% {
+      opacity: 1;
+      transform: translateY(-40px) scale(1.2);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-60px) scale(0.8);
+    }
+  }
+  
+  /* Pier Scene */
+  .pier-scene {
+    background: linear-gradient(to bottom, #87ceeb 0%, #1e88e5 100%);
+  }
+  
+  .pier {
+    position: absolute;
+    bottom: 20%;
+    width: 80%;
+    height: 30px;
+    background: linear-gradient(to bottom, #8d6e63 0%, #6d4c41 100%);
+    left: 10%;
+    z-index: 5;
+  }
+  
+  .pier:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    background: #5d4037;
+    bottom: -10px;
+    z-index: 5;
+  }
+  
+  .pier-post {
+    position: absolute;
+    width: 20px;
+    height: 100px;
+    background: #5d4037;
+    bottom: 0;
+    z-index: 4;
+  }
+  
+  .ocean {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to bottom, #1e88e5 0%, #0d47a1 100%);
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .wave {
+    position: absolute;
+    width: 200%;
+    height: 60px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%231E88E5" fill-opacity="0.5" d="M0,192L60,186.7C120,181,240,171,360,181.3C480,192,600,224,720,224C840,224,960,192,1080,181.3C1200,171,1320,181,1380,186.7L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>');
+    background-repeat: repeat-x;
+    animation: waveAnimation 10s linear infinite;
+    bottom: 0;
+    z-index: 2;
+  }
+  
+  @keyframes waveAnimation {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .sun {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #ffd54f 0%, #f57f17 100%);
+    border-radius: 50%;
+    top: 50px;
+    right: 100px;
+    box-shadow: 0 0 50px #ffd54f;
+    z-index: 1;
+  }
+  
+  /* Beach Scene */
+  .beach-scene {
+    background: linear-gradient(to bottom, #ffeb3b 0%, #ff9800 100%);
+  }
+  
+  .sand {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to bottom, #f4a460 0%, #d2b48c 100%);
+    z-index: 1;
+  }
+  
+  .beach-sun {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, #ffd54f 0%, #f57f17 100%);
+    border-radius: 50%;
+    top: 50px;
+    right: 100px;
+    box-shadow: 0 0 70px #ffd54f;
+    z-index: 1;
+  }
+  
+  .palm-tree {
+    position: absolute;
+    bottom: 30%;
+    z-index: 2;
+  }
+  
+  .palm-trunk {
+    position: absolute;
+    width: 30px;
+    height: 150px;
+    background: linear-gradient(to top, #8d6e63 0%, #6d4c41 100%);
+    bottom: 0;
+    left: 0;
+    transform: rotate(10deg);
+    border-radius: 10px;
+  }
+  
+  .palm-leaf {
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    background: #4caf50;
+    border-radius: 100px 0 100px 0;
+    transform-origin: 0 50%;
+  }
+  
+  .palm-leaf:nth-child(2) {
+    transform: rotate(-30deg);
+    top: -40px;
+    left: 20px;
+  }
+  
+  .palm-leaf:nth-child(3) {
+    transform: rotate(-10deg);
+    top: -60px;
+    left: 25px;
+  }
+  
+  .palm-leaf:nth-child(4) {
+    transform: rotate(10deg);
+    top: -70px;
+    left: 30px;
+  }
+  
+  .palm-leaf:nth-child(5) {
+    transform: rotate(30deg);
+    top: -50px;
+    left: 35px;
+  }
+  
+  .book {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    background: #ffffff;
+    border: 2px solid #424242;
+    z-index: 11;
+  }
+  
+  .book1 {
+    bottom: 40%;
+    left: 38%;
+    transform: rotate(-10deg);
+  }
+  
+  .book2 {
+    bottom: 40%;
+    left: 55%;
+    transform: rotate(10deg);
+  }
+  
+  .kiss-animation {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 30%;
+    left: 45%;
+    z-index: 12;
+    opacity: 0;
+    animation: kiss 2s ease-in-out forwards;
+  }
+  
+  .heart {
+    color: #f44336;
+    font-size: 30px;
+    position: absolute;
+    animation: float 2s ease-in-out infinite;
+  }
+  
+  @keyframes kiss {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+  }
+  
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Restaurant Scene */
+  .restaurant-scene {
+    background: linear-gradient(to bottom, #eeeeee 0%, #e0e0e0 100%);
+  }
+  
+  .restaurant-wall {
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(to bottom, #ffebee 0%, #ffcdd2 100%);
+    top: 0;
+    z-index: 1;
+  }
+  
+  .restaurant-floor {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    background: #795548;
+    bottom: 0;
+    z-index: 1;
+  }
+  
+  .restaurant-table {
+    position: absolute;
+    width: 200px;
+    height: 20px;
+    background: linear-gradient(to bottom, #8d6e63 0%, #6d4c41 100%);
+    bottom: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    border-radius: 5px;
+  }
+  
+  .restaurant-table:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 100px;
+    background: #5d4037;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .restaurant-table-cloth {
+    position: absolute;
+    width: 180px;
+    height: 5px;
+    background: #f5f5f5;
+    top: -5px;
+    left: 10px;
+    border-radius: 5px 5px 0 0;
+  }
+  
+  /* Realistic Pizza */
+  .pizza {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #f5deb3;
+    border-radius: 50%;
+    bottom: calc(40% + 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+  
+  .pizza:before {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: #ff9800;
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+  }
+  
+  .pizza-crust {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 8px solid #d2b48c;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    z-index: 4;
+  }
+  
+  .pizza-topping {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #b71c1c;
+    border-radius: 50%;
+    z-index: 5;
+  }
+  
+  .pizza-cheese {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 235, 59, 0.7);
+    border-radius: 50%;
+    top: 10px;
+    left: 10px;
+    z-index: 4;
+  }
+  
+  .pizza-slice {
+    position: absolute;
+    height: 100px;
+    width: 2px;
+    background: rgba(0, 0, 0, 0.2);
+    transform-origin: bottom center;
+    z-index: 6;
+    left: 50px;
+  }
+  
+  /* Messages */
+  .message-container {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+  }
+  
+  .message {
+    max-width: 80%;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+    color: #333;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .message.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .message.boyfriend {
+    background-color: rgba(63, 81, 181, 0.2);
+    align-self: flex-start;
+    margin-left: 20%;
+  }
+  
+  .message.girlfriend {
+    background-color: rgba(233, 30, 99, 0.2);
+    align-self: flex-end;
+    margin-right: 20%;
+  }
+  
+  .final-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 30;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .final-message.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  /* Navigation Buttons */
+  .next-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 20;
+    transition: all 0.3s ease;
+  }
+  
+  .next-button:hover {
+    background-color: #303f9f;
+    transform: translateY(-2px);
+  }
+  
+  .restart-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s ease;
+  }
+  
+  .restart-button:hover {
+    background-color: #c2185b;
+    transform: translateX(-50%) translateY(-2px);
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .message {
+      font-size: 16px;
+      max-width: 90%;
+    }
+  
+    .final-message {
+      font-size: 24px;
+      width: 80%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .message {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .final-message {
+      font-size: 20px;
+      padding: 15px;
+    }
+  
+    .next-button,
+    .restart-button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+  
